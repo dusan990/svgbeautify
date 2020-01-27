@@ -1,0 +1,75 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+main {
+  width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #F7F8FA;
+}
+main textarea {
+  padding: 16px;
+  resize: none;
+  border: 1px solid #E6E7EC;
+  transition: border 0.2s ease-in-out;
+}
+main textarea:focus {
+  border: 1px dashed #33508a;
+  outline: none;
+}
+main .input-container {
+  display: flex;
+  flex-flow: column wrap;
+}
+main .input-container:first-of-type {
+  margin: 0 0 40px 0;
+}
+main .input-container label {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+main .input-container .submit {
+  border: none;
+  padding: 20px 45px;
+  margin-top: 24px;
+  font-family: "Open Sans";
+  font-size: 17px;
+  background-color: #11B37B;
+  color: white;
+}
+main .input-container .submit:hover {
+  background-color: #269a72;
+}
+main .output {
+  position: relative;
+}
+main .output .clipboard {
+  position: absolute;
+  top: 36px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+main .output .clipboard img {
+  width: 24px;
+  height: 24px;
+}
+main .output .clipboard #tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+/*# sourceMappingURL=style.css.map */

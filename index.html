@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+<main>
+    <div class="input-container">
+        <label for="">Input</label>
+        <textarea cols="30" rows="10" id="input" type="text"></textarea>
+        <button class="submit" onclick="splitSvg()">Clean SVG</button>
+    </div>
+
+
+    <!-- version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" -->
+
+    <div class="input-container output">
+        <label for="">Output</label>
+        <textarea cols="30" rows="10" id="output" type="text"></textarea>
+        <button class="clipboard" onclick="myFunction()">
+            <img src="icon-clipboard.svg" alt="">
+        </button>
+    </div>
+</main>
+
+<script>
+    function splitSvg() {
+        const input = document.getElementById('input').value,
+              output = document.getElementById('output'),
+              regEx1 = /( ?xm.*?=".*?")|( ?version=".*?")/g,
+              newSvg = input.replace(regEx1, ''),
+              regEx2 = /( ?\s*>\s*<\s*)/g, //find closing ending tag characters and delete whitespace
+              outputSvg = newSvg.replace(regEx2, ">\n<"); //new line between tags
+        
+        output.value = outputSvg;
+    }
+
+
+    
+    // function splitSvg() {
+    //     const getSvg = input.value.indexOf("<svg");
+    //     const sliceSvg = input.value.slice(getSvg);
+    //     const newString = sliceSvg.split(' ');
+
+    //     let split = '';
+
+    //     for (i = 0; i < newString.length; i++) {
+    //         if (newString[i].startsWith("xm") || newString[i].startsWith("version")) {   
+    //             split += newString[i];
+    //         }
+    //     }
+
+    //     split = newString.filter(val => 
+    //         !split.includes(val)
+    //     ).join(' ');
+
+    //     output.value = split;
+    // }
+
+    // function myFunction() {
+    //     const copyClipboad = document.getElementById("output");
+
+    //     copyClipboad.select();
+    //     copyClipboad.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    //     document.execCommand("copy");
+    // }
+</script> 
+    
+
+</body>
+</html>
