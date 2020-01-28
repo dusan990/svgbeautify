@@ -18,9 +18,6 @@
         <button class="submit" onclick="splitSvg()">Clean SVG</button>
     </div>
 
-
-    <!-- version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" -->
-
     <div class="input-container output">
         <label for="">Output</label>
         <textarea cols="30" rows="10" id="output" type="text"></textarea>
@@ -31,47 +28,25 @@
 </main>
 
 <script>
+
     function splitSvg() {
-        const input = document.getElementById('input').value,
-              output = document.getElementById('output'),
-              regEx1 = /( ?xm.*?=".*?")|( ?version=".*?")/g,
-              newSvg = input.replace(regEx1, ''),
+        const getSvg = input.value.indexOf("<svg"),
+              sliceSvg = input.value.slice(getSvg),
+              newString = sliceSvg.split(' ');
+
+        let split = '';
+
+        split = newString.filter(value => 
+            !split.includes(value)
+        ).join(' ');
+
+        const regEx1 = /( ?xm.*?=".*?")|( ?version=".*?")/g,
+              newSvg = split.replace(regEx1, ''),
               regEx2 = /( ?\s*>\s*<\s*)/g, //find closing ending tag characters and delete whitespace
               outputSvg = newSvg.replace(regEx2, ">\n<"); //new line between tags
         
         output.value = outputSvg;
     }
-
-
-    
-    // function splitSvg() {
-    //     const getSvg = input.value.indexOf("<svg");
-    //     const sliceSvg = input.value.slice(getSvg);
-    //     const newString = sliceSvg.split(' ');
-
-    //     let split = '';
-
-    //     for (i = 0; i < newString.length; i++) {
-    //         if (newString[i].startsWith("xm") || newString[i].startsWith("version")) {   
-    //             split += newString[i];
-    //         }
-    //     }
-
-    //     split = newString.filter(val => 
-    //         !split.includes(val)
-    //     ).join(' ');
-
-    //     output.value = split;
-    // }
-
-    // function myFunction() {
-    //     const copyClipboad = document.getElementById("output");
-
-    //     copyClipboad.select();
-    //     copyClipboad.setSelectionRange(0, 99999); /*For mobile devices*/
-
-    //     document.execCommand("copy");
-    // }
 </script> 
     
 
